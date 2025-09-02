@@ -26,7 +26,7 @@ class RumahSakitController extends Controller
             'nama_rumah_sakit' => 'required|string|max:255',
             'alamat' => 'required|string',
             'email' => 'required|email|unique:rumah_sakits,email',
-            'telepon' => 'required|numeric|digits_between:12,15',
+            'telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
         RumahSakit::create($request->all());
@@ -51,7 +51,7 @@ class RumahSakitController extends Controller
             'nama_rumah_sakit' => 'required|string|max:255',
             'alamat' => 'required|string',
             'email' => 'required|email|unique:rumah_sakits,email,' . $rumahSakit->id,
-            'telepon' => 'required|numeric|digits_between:12,15',
+            'telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
         $rumahSakit->update($request->all());

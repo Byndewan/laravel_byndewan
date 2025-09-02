@@ -32,7 +32,7 @@ class PasienController extends Controller
         $request->validate([
             'nama_pasien' => 'required|string|max:255',
             'alamat' => 'required|string',
-            'no_telepon' => 'required|numeric|digits_between:12,15',
+            'no_telepon' => 'required|numeric|digits_between:10,15',
             'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
         ]);
 
@@ -58,7 +58,7 @@ class PasienController extends Controller
         $request->validate([
             'nama_pasien' => 'required|string|max:255',
             'alamat' => 'required|string',
-            'no_telepon' => 'required|numeric|digits_between:12,15',
+            'no_telepon' => 'required|numeric|digits_between:10,15',
             'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
         ]);
 
