@@ -17,7 +17,7 @@
 
 Clone repository:
 ```bash
-git clone https://github.com/Byndewan/hospital-management.git
+git clone https://github.com/Byndewan/laravel_byndewan.git
 cd hospital-management
 ```
 
