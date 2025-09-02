@@ -57,7 +57,13 @@ php artisan serve
 ```
 
 Akses di:  
-👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+Akun untuk login:
+```bash
+Username: admin
+password: admin123
+```
 
 ## Features
 
