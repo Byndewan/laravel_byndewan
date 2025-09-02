@@ -65,15 +65,33 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('.toggle-password').click(function() {
-            const passwordInput = $('#password');
-            const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
-            passwordInput.attr('type', type);
+@push('scripts')    
+    <script>
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
 
-            $(this).toggleClass('fa-eye fa-eye-slash');
+        @if (session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if (session('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+
+        @if (session('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        $(document).ready(function() {
+            $('.toggle-password').click(function() {
+                const passwordInput = $('#password');
+                const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+                passwordInput.attr('type', type);
+
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
         });
-    });
-</script>
+    </script>
+@endpush
 @endsection
