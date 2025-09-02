@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-save mr-2"></i> Update
                             </button>
                             <a href="{{ route('rumah-sakit.show', $rumahSakit->id) }}" class="btn btn-outline-secondary">

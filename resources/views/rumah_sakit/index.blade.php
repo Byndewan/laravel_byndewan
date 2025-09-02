@@ -45,7 +45,7 @@
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('rumah-sakit.show', $rumahSakit->id) }}"
                                                         class="btn btn-sm btn-info mr-2" data-toggle="tooltip" title="Detail">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fas fa-eye mt-2"></i>
                                                     </a>
                                                     <a href="{{ route('rumah-sakit.edit', $rumahSakit->id) }}"
                                                         class="btn btn-sm btn-primary mr-2" data-toggle="tooltip" title="Edit">

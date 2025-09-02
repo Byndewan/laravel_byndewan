@@ -314,7 +314,15 @@
             background-color: var(--bg-card) !important;
             color: var(--text-primary) !important;
         }
-    </style>
+        
+        .text-custom {
+            color: var(--text-primary) !important;
+        }
+
+        .bg-custom {
+            background-color: var(--bg-card) !important;
+        }
+        </style>
 </head>
 
 <body>
@@ -330,7 +338,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
 
-                            <a class="navbar-brand font-weight-bold" href="{{ url('/dashboard') }}">
+                            <a class="navbar-brand font-weight-bold text-custom" href="{{ url('/dashboard') }}">
                                 <i class="fas fa-hospital mr-2 text-primary"></i> Manajemen Rumah Sakit
                             </a>
 
@@ -342,7 +350,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center"
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center text-custom"
                                             href="#" role="button" data-toggle="dropdown">
                                             <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mr-2"
                                                 style="width: 32px; height: 32px;">

@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-save mr-2"></i> Simpan
                             </button>
                             <a href="{{ route('rumah-sakit.index') }}" class="btn btn-outline-secondary">
