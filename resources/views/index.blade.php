@@ -99,6 +99,11 @@
                             </div>
                         @endif
                     </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="{{ route('pasien.index') }}" class="text-primary font-weight-bold">
+                            Lihat semua data baru <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
