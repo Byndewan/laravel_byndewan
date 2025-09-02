@@ -17,7 +17,7 @@
 
 Clone repository:
 ```bash
-git clone https://github.com/username/hospital-management.git
+git clone https://github.com/Byndewan/hospital-management.git
 cd hospital-management
 ```
 
@@ -39,7 +39,7 @@ php artisan key:generate
 
 Konfigurasi database di file `.env`.
 
-Jalankan migration & seeding (jika ada seeder):
+Jalankan migration & seeding:
 ```bash
 php artisan migrate --seed
 ```
