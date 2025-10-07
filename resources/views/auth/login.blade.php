@@ -65,21 +65,11 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.toggle-password').click(function() {
-            const passwordInput = $('#password');
-            const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
-            passwordInput.attr('type', type);
-=======
-@push('scripts')    
+@push('scripts')
     <script>
         @if (session('success'))
             toastr.success("{{ session('success') }}");
         @endif
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
 
         @if (session('error'))
             toastr.error("{{ session('error') }}");

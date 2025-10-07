@@ -28,8 +28,6 @@ class PasienController extends Controller
 
     public function store(StorePasienRequest $request)
     {
-<<<<<<< HEAD
-=======
         $request->validate([
             'nama_pasien' => 'required|string|max:255',
             'alamat' => 'required|string',
@@ -37,7 +35,6 @@ class PasienController extends Controller
             'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
         ]);
 
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
         Pasien::create($request->all());
 
         return redirect()->route('pasien.index')
@@ -55,8 +52,6 @@ class PasienController extends Controller
 
     public function update(StorePasienRequest $request, Pasien $pasien)
     {
-<<<<<<< HEAD
-=======
         $request->validate([
             'nama_pasien' => 'required|string|max:255',
             'alamat' => 'required|string',
@@ -64,7 +59,6 @@ class PasienController extends Controller
             'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
         ]);
 
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
         $pasien->update($request->all());
 
         return redirect()->route('pasien.index')

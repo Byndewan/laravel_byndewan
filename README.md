@@ -17,13 +17,10 @@
 
 Clone repository:
 ```bash
-<<<<<<< HEAD
-git clone https://github.com/byndewan/hospital-management.git
 cd hospital-management
-=======
+
 git clone https://github.com/Byndewan/laravel_byndewan.git
 cd laravel_byndewan
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
 ```
 
 Install dependencies:

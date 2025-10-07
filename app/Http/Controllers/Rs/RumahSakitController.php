@@ -23,8 +23,6 @@ class RumahSakitController extends Controller
 
     public function store(StoreRumahSakitRequest $request)
     {
-<<<<<<< HEAD
-=======
         $request->validate([
             'nama_rumah_sakit' => 'required|string|max:255',
             'alamat' => 'required|string',
@@ -32,7 +30,6 @@ class RumahSakitController extends Controller
             'telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
         RumahSakit::create($request->all());
 
         return redirect()->route('rumah-sakit.index')
@@ -51,8 +48,6 @@ class RumahSakitController extends Controller
 
     public function update(StoreRumahSakitRequest $request, RumahSakit $rumahSakit)
     {
-<<<<<<< HEAD
-=======
         $request->validate([
             'nama_rumah_sakit' => 'required|string|max:255',
             'alamat' => 'required|string',
@@ -60,7 +55,6 @@ class RumahSakitController extends Controller
             'telepon' => 'required|numeric|digits_between:10,15',
         ]);
 
->>>>>>> c75da839718ba9b6fdadf5e3a2bed96f87898a61
         $rumahSakit->update($request->all());
 
         return redirect()->route('rumah-sakit.index')

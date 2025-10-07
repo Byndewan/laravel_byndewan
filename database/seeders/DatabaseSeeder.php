@@ -40,6 +40,6 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        Pasien::factory()->count(1000)->create();
+        Pasien::factory()->count(50000)->create();
     }
 }

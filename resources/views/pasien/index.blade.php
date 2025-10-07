@@ -70,7 +70,7 @@
                                 <tbody>
                                     @foreach ($pasiens as $pasien)
                                         <tr>
-                                            <td><span class="badge badge-secondary">{{ $loop->iteration }}</span></td>
+                                            <td><span class="badge badge-secondary">{{ ($pasiens->currentPage() - 1) * $pasiens->perPage() + $loop->iteration }}</span></td>
                                             <td>{{ $pasien->nama_pasien }}</td>
                                             <td>{{ Str::limit($pasien->alamat, 50) }}</td>
                                             <td>{{ $pasien->no_telepon }}</td>
