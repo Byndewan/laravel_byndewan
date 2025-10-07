@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-2">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="rumahSakitFilter" class="form-label">Filter Berdasarkan Rumah Sakit:</label>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex align-items-end">
+            <div class="col-md-3 mb-3 d-flex align-items-end">
                 <a href="{{ route('pasien.index') }}" class="btn btn-outline-secondary btn-block" id="resetFilters">
                     <i class="fas fa-redo mr-2"></i> Reset Filter
                 </a>
@@ -81,7 +81,7 @@
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('pasien.show', $pasien->id) }}"
                                                         class="btn btn-sm btn-info mr-2" data-toggle="tooltip" title="Detail">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fas fa-eye mt-2"></i>
                                                     </a>
                                                     <a href="{{ route('pasien.edit', $pasien->id) }}"
                                                         class="btn btn-sm btn-primary mr-2" data-toggle="tooltip" title="Edit">

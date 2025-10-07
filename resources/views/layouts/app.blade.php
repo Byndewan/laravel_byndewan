@@ -314,6 +314,19 @@
             background-color: var(--bg-card) !important;
             color: var(--text-primary) !important;
         }
+
+        .text-custom {
+            color: var(--text-primary) !important;
+        }
+
+        .bg-custom {
+            background-color: var(--bg-card) !important;
+        }
+
+        .navbar .dropdown-menu {
+            position: absolute !important;
+            z-index: 1050;
+        }
     </style>
 </head>
 
@@ -321,93 +334,88 @@
     @if (Request::is('/'))
         @yield('content')
     @else
+        <div id="app">
+            @auth
+                <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+                    <div class="container-fluid d-flex align-items-center">
+                        <button class="navbar-toggler d-md-none mr-2" type="button" id="sidebarToggle">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-            <div id="app">
-                @auth
-                    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
-                        <div class="container-fluid">
-                            <button class="navbar-toggler d-md-none mr-2" type="button" id="sidebarToggle">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                        <a class="navbar-brand font-weight-bold text-custom" href="{{ url('/dashboard') }}">
+                            <i class="fas fa-hospital mr-2 text-primary"></i> Manajemen Rumah Sakit
+                        </a>
 
-                            <a class="navbar-brand font-weight-bold" href="{{ url('/dashboard') }}">
-                                <i class="fas fa-hospital mr-2 text-primary"></i> Manajemen Rumah Sakit
-                            </a>
+                        <div class="flex-grow-1"></div>
 
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown"
+                                    class="nav-link dropdown-toggle d-flex align-items-center text-custom" href="#"
+                                    role="button" data-toggle="dropdown">
+                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mr-2"
+                                        style="width: 32px; height: 32px;">
+                                        {{ substr(Auth::user()->name, 0, 1) }}
+                                    </div>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            @endauth
 
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center"
-                                            href="#" role="button" data-toggle="dropdown">
-                                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mr-2"
-                                                style="width: 32px; height: 32px;">
-                                                {{ substr(Auth::user()->name, 0, 1) }}
-                                            </div>
-                                            {{ Auth::user()->name }}
+            <div class="overlay"></div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    @auth
+                        <nav class="col-md-2 d-md-block sidebar py-3">
+                            <div class="sidebar-sticky">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}"
+                                            href="{{ route('dashboard') }}">
+                                            <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#"
-                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ Request::is('rumah-sakit*') ? 'active' : '' }}"
+                                            href="{{ route('rumah-sakit.index') }}">
+                                            <i class="fas fa-hospital mr-2"></i> Rumah Sakit
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ Request::is('pasien*') ? 'active' : '' }}"
+                                            href="{{ route('pasien.index') }}">
+                                            <i class="fas fa-user-injured mr-2"></i> Pasien
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                    </nav>
-                @endauth
+                        </nav>
+                    @endauth
 
-                <div class="overlay"></div>
-
-                <div class="container-fluid">
-                    <div class="row">
-                        @auth
-                            <nav class="col-md-2 d-md-block sidebar py-3">
-                                <div class="sidebar-sticky">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}"
-                                                href="{{ route('dashboard') }}">
-                                                <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ Request::is('rumah-sakit*') ? 'active' : '' }}"
-                                                href="{{ route('rumah-sakit.index') }}">
-                                                <i class="fas fa-hospital mr-2"></i> Rumah Sakit
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ Request::is('pasien*') ? 'active' : '' }}"
-                                                href="{{ route('pasien.index') }}">
-                                                <i class="fas fa-user-injured mr-2"></i> Pasien
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        @endauth
-
-                        <main role="main" class="col-md-10 ml-sm-auto px-md-4 py-4">
-                            @yield('content')
-                        </main>
-                    </div>
+                    <main role="main" class="col-md-10 ml-sm-auto px-md-4 py-4">
+                        @yield('content')
+                    </main>
                 </div>
             </div>
+        </div>
 
-            <div class="theme-switcher" id="themeSwitcher">
-                <i class="fas fa-moon"></i>
-            </div>
+        <div class="theme-switcher" id="themeSwitcher">
+            <i class="fas fa-moon"></i>
+        </div>
     @endif
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
