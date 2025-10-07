@@ -109,6 +109,9 @@
                         </div>
                         @endif
                     </div>
+                    <div class="d-flex justify-content-end">
+                        {{ $pasiens->links() }}
+                    </div>
                 </div>
             </div>
         </div>

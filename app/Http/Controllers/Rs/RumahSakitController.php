@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Rs;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRumahSakitRequest;
 use App\Models\Pasien;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
@@ -20,15 +21,8 @@ class RumahSakitController extends Controller
         return view('rumah_sakit.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRumahSakitRequest $request)
     {
-        $request->validate([
-            'nama_rumah_sakit' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'email' => 'required|email|unique:rumah_sakits,email',
-            'telepon' => 'required|numeric|digits_between:12,15',
-        ]);
-
         RumahSakit::create($request->all());
 
         return redirect()->route('rumah-sakit.index')
@@ -45,15 +39,8 @@ class RumahSakitController extends Controller
         return view('rumah_sakit.edit', compact('rumahSakit'));
     }
 
-    public function update(Request $request, RumahSakit $rumahSakit)
+    public function update(StoreRumahSakitRequest $request, RumahSakit $rumahSakit)
     {
-        $request->validate([
-            'nama_rumah_sakit' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'email' => 'required|email|unique:rumah_sakits,email,' . $rumahSakit->id,
-            'telepon' => 'required|numeric|digits_between:12,15',
-        ]);
-
         $rumahSakit->update($request->all());
 
         return redirect()->route('rumah-sakit.index')

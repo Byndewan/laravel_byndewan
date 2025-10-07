@@ -17,7 +17,7 @@
 
 Clone repository:
 ```bash
-git clone https://github.com/username/hospital-management.git
+git clone https://github.com/byndewan/hospital-management.git
 cd hospital-management
 ```
 

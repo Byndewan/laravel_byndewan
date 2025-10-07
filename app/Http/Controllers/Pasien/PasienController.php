@@ -3,73 +3,55 @@
 namespace App\Http\Controllers\Pasien;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePasienRequest;
 use App\Models\Pasien;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $rumahSakits = RumahSakit::all();
         $selectedRS = $request->get('rumah_sakit_id');
 
         $pasiens = Pasien::when($selectedRS, function($query) use ($selectedRS) {
             return $query->where('rumah_sakit_id', $selectedRS);
-        })->with('rumahSakit')->get();
+        })->with('rumahSakit')->paginate(10);
 
         return view('pasien.index', compact('pasiens', 'rumahSakits', 'selectedRS'));
     }
 
-    public function create()
-    {
+    public function create(){
         $rumahSakits = RumahSakit::all();
         return view('pasien.create', compact('rumahSakits'));
     }
 
-    public function store(Request $request)
+    public function store(StorePasienRequest $request)
     {
-        $request->validate([
-            'nama_pasien' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'no_telepon' => 'required|numeric|digits_between:12,15',
-            'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
-        ]);
-
         Pasien::create($request->all());
 
         return redirect()->route('pasien.index')
             ->with('success', 'Pasien berhasil ditambahkan.');
     }
 
-    public function show(Pasien $pasien)
-    {
+    public function show(Pasien $pasien){
         return view('pasien.show', compact('pasien'));
     }
 
-    public function edit(Pasien $pasien)
-    {
+    public function edit(Pasien $pasien){
         $rumahSakits = RumahSakit::all();
         return view('pasien.edit', compact('pasien', 'rumahSakits'));
     }
 
-    public function update(Request $request, Pasien $pasien)
+    public function update(StorePasienRequest $request, Pasien $pasien)
     {
-        $request->validate([
-            'nama_pasien' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'no_telepon' => 'required|numeric|digits_between:12,15',
-            'rumah_sakit_id' => 'required|exists:rumah_sakits,id'
-        ]);
-
         $pasien->update($request->all());
 
         return redirect()->route('pasien.index')
             ->with('success', 'Pasien berhasil diperbarui.');
     }
 
-    public function destroy(Pasien $pasien)
-    {
+    public function destroy(Pasien $pasien){
         $pasien->delete();
 
         if (request()->ajax()) {
@@ -80,8 +62,7 @@ class PasienController extends Controller
             ->with('success', 'Pasien berhasil dihapus.');
     }
 
-    public function getByRumahSakit($rumahSakitId)
-    {
+    public function getByRumahSakit($rumahSakitId){
         $pasiens = Pasien::where('rumah_sakit_id', $rumahSakitId)->get();
         return response()->json($pasiens);
     }
